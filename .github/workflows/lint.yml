@@ -1,0 +1,15 @@
+name: lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Home Assistant add-on lint
+        uses: frenck/action-addon-linter@v2
+        with:
+          path: "./raven2mqtt"

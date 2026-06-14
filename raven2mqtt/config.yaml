@@ -1,0 +1,39 @@
+name: RAVEn to MQTT
+version: "0.1.0"
+slug: raven2mqtt
+description: Bridge a Rainforest RAVEn / EMU-2 serial device to MQTT with Home Assistant discovery
+url: https://github.com/lestephen/raven2mqtt-addon
+arch:
+  - aarch64
+  - amd64
+startup: services
+boot: auto
+init: false
+uart: true
+udev: true
+services:
+  - mqtt:want
+options:
+  serial_device: /dev/ttyACM0
+  device_id: emu2
+  device_name: Rainforest EMU-2
+  base_topic: raven2mqtt/emu2
+  discovery_prefix: homeassistant
+  default_entity_prefix: rainforest_emu_2
+  mqtt_host: ""
+  mqtt_port: 1883
+  mqtt_username: ""
+  mqtt_password: ""
+  mqtt_tls: false
+schema:
+  serial_device: str
+  device_id: str
+  device_name: str
+  base_topic: str
+  discovery_prefix: str
+  default_entity_prefix: str
+  mqtt_host: str?
+  mqtt_port: port
+  mqtt_username: str?
+  mqtt_password: password?
+  mqtt_tls: bool
